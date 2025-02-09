@@ -257,17 +257,51 @@
                         <input type="file" id="fotoaset" class="form-control" name="fotoaset" required />
                     </div>
                 </div> --}}
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{{-- modal warning delete --}}
+<div class="modal fade" id="modalDelete" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <form class="modal-content" action="#" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCreateTitle">Yakin Hapus Anggota ?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="email" class="form-label">email</label>
+                        <input type="text" id="email" class="form-control" name="email" value="budi@gmail.com" 
+                            readonly />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nik" class="form-label">Nik</label>
+                        <input type="text" id="nik" class="form-control" name="nik" value="1223344556677889" 
+                            readonly />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nama" class="form-label">Nama</label>
+                        <input type="text" id="nama" class="form-control" name="nama" value="budi" readonly />
+                    </div>
+                </div>
                 {{-- <div class="row">
                     <div class="col mb-3">
-                        <label for="jenkel" class="form-label">Kategori Aset</label>
-                        <select name="jenis_kelamin" id="jenis_kelamin" class="form-select">
-                            <option value="0" hidden> pilih jenis Kategori aset</option>
-                            <option value="laki laki">elektronik</option>
-                            <option value="perempuan">alat tulis</option>
-                            <option value="perempuan">alat tulis</option>
-                            <option value="perempuan">alat tulis</option>
-                            <option value="perempuan">alat tulis</option>
-                        </select>
+                        <label for="fotoaset" class="form-label">foto aset</label>
+                        <input type="file" id="fotoaset" class="form-control" name="fotoaset" required />
                     </div>
                 </div> --}}
 
@@ -275,7 +309,7 @@
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                         Close
                     </button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
                 </div>
             </div>
         </form>
