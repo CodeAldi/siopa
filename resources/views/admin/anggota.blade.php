@@ -49,15 +49,15 @@
                                         method="post">
                                         @csrf
                                         <button type="submit" class="dropdown-item btn btn-success mb-1 text-white"><i
-                                                class="bx bx-check-circle me-1"></i>
-                                            Teruskan kepada Kabag</button>
+                                                class="bx bx-pencil me-1"></i>
+                                            Edit</button>
                                     </form>
                                     <form action="#"
                                         method="post">
                                         @csrf
                                         <button type="submit" class="dropdown-item btn btn-danger mb-1 text-white"><i
                                                 class="bx bx-x-circle me-1"></i>
-                                            Tolak</button>
+                                            Hapus</button>
                                     </form>
                                 </div>
                             </div>
@@ -76,18 +76,9 @@
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <form action="#" method="post">
-                                        @csrf
-                                        <button type="submit" class="dropdown-item btn btn-success mb-1 text-white"><i
-                                                class="bx bx-check-circle me-1"></i>
-                                            Teruskan kepada Kabag</button>
-                                    </form>
-                                    <form action="#" method="post">
-                                        @csrf
-                                        <button type="submit" class="dropdown-item btn btn-danger mb-1 text-white"><i
-                                                class="bx bx-x-circle me-1"></i>
-                                            Tolak</button>
-                                    </form>
+                                    <button class="dropdown-item btn btn-warning mb-1 text-white" data-bs-toggle="modal" data-bs-target="#modalEdit"><i class="bx bx-pencil me-1"></i>Edit</button>
+                                    
+                                    <button class="dropdown-item btn btn-danger mb-1 text-white" data-bs-toggle="modal" data-bs-target="#modalDelete"><i class="bx bx-x-circle me-1"></i>Hapus</button>
                                 </div>
                             </div>
                         </td>
@@ -162,6 +153,102 @@
                         <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
                         <input type="date" id="tanggalLahir" class="form-control" name="tanggalLahir"
                             placeholder="masukan kota/kabupaten tanggal lahir " required />
+                    </div>
+                </div>
+                {{-- <div class="row">
+                    <div class="col mb-3">
+                        <label for="fotoaset" class="form-label">foto aset</label>
+                        <input type="file" id="fotoaset" class="form-control" name="fotoaset" required />
+                    </div>
+                </div> --}}
+                {{-- <div class="row">
+                    <div class="col mb-3">
+                        <label for="jenkel" class="form-label">Kategori Aset</label>
+                        <select name="jenis_kelamin" id="jenis_kelamin" class="form-select">
+                            <option value="0" hidden> pilih jenis Kategori aset</option>
+                            <option value="laki laki">elektronik</option>
+                            <option value="perempuan">alat tulis</option>
+                            <option value="perempuan">alat tulis</option>
+                            <option value="perempuan">alat tulis</option>
+                            <option value="perempuan">alat tulis</option>
+                        </select>
+                    </div>
+                </div> --}}
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Modal untuk Edit -->
+<div class="modal fade" id="modalEdit" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <form class="modal-content" action="#" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCreateTitle">Edit Anggota</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="email" class="form-label">email</label>
+                        <input type="text" id="email" class="form-control" name="email"
+                            value="budi@gmail.com" autofocus required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="password" class="form-label">password</label>
+                        <input type="password" id="password" class="form-control" name="password"
+                            value="12345678" autofocus required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nik" class="form-label">Nik</label>
+                        <input type="text" id="nik" class="form-control" name="nik"
+                            value="1223344556677889" autofocus required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nama" class="form-label">Nama</label>
+                        <input type="text" id="nama" class="form-control" name="nama"
+                            value="budi" autofocus required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nohp" class="form-label">no hp</label>
+                        <input type="text" id="nohp" class="form-control" name="nohp"
+                            value="081223344556" required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="alamat" class="form-label">alamat</label>
+                        <input type="text" id="alamat" class="form-control" name="alamat"
+                            value="jl. soekarno-hatta nomor 100, rt 15 rw 05 " required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="tempatLahir" class="form-label">Tempat Lahir</label>
+                        <input type="text" id="tempatLahir" class="form-control" name="tempatLahir"
+                            value="padang pariaman" required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
+                        <input type="date" id="tanggalLahir" class="form-control" name="tanggalLahir"
+                            value="2000-01-08" required />
                     </div>
                 </div>
                 {{-- <div class="row">
