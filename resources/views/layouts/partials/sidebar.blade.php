@@ -3,7 +3,7 @@
         <a href="index.html" class="app-brand-link">
             <img src="{{ asset('assets/img/favicon/favicon.ico') }}" class="app-brand-logo rounded demo" width="50"
                 alt="">
-            <span class="app-brand-text demo menu-text fw-bolder ">sistem informasi</span>
+            <span class="app-brand-text demo menu-text fw-bolder fs-5 ">sistem informasi <br>Organisasi Pemuda <br>Anak Air</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -34,13 +34,13 @@
                         <div>Anggota</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
+                <li class="menu-item {{ (Request::RouteIs('admin.management.pengurus.*')) ? 'active' : '' }}">
+                    <a href="{{ route('admin.management.pengurus.index') }}" class="menu-link">
                         <div>Pengurus</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
+                <li class="menu-item {{ (Request::RouteIs('admin.management.masyarakat.*')) ? 'active' : '' }}">
+                    <a href="{{ route('admin.management.masyarakat.index') }}" class="menu-link">
                         <div>Masyarakat</div>
                     </a>
                 </li>

@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\AuthenController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ManagementAnggotaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthenController;
+use App\Http\Controllers\ManagementAnggotaController;
+use App\Http\Controllers\ManagementPengurusController;
+use App\Http\Controllers\ManagementMasyarakatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +28,10 @@ Route::controller(AuthenController::class)->group(function(){
 Route::get('/',[HomeController::class,'index'])->middleware('auth')->name('home');
 Route::controller(ManagementAnggotaController::class)->middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/management-anggota','index')->name('admin.management.anggota.index');
+});
+Route::controller(ManagementPengurusController::class)->middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/management-pengurus', 'index')->name('admin.management.pengurus.index');
+});
+Route::controller(ManagementMasyarakatController::class)->middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/management-masyarakat', 'index')->name('admin.management.masyarakat.index');
 });
