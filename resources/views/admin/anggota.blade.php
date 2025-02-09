@@ -8,7 +8,7 @@
             </h5>
             <button type="button" class="btn btn-primary col-4" data-bs-toggle="modal" data-bs-target="#modalCreate">
                 <i class="tf-icons bx bx-plus-circle"></i>
-                Tambah Aset
+                Tambah Anggota
             </button>
         </div>
     </div>
@@ -67,9 +67,9 @@
                     @empty
                     <tr>
                         <td>1</td>
-                        <td>aldi</td>
+                        <td>budi</td>
                         <td>laki laki</td>
-                        <td>jl taman karya perumahan citra kencana blok b nomor 23 rt 15 rw 5</td>
+                        <td>jl soekarno-hatta nomor 100 rt 15 rw 05</td>
                         <td class="text-center">
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -104,30 +104,72 @@
         <form class="modal-content" action="#" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCreateTitle">Tambah Data Aset</h5>
+                <h5 class="modal-title" id="modalCreateTitle">Tambah Anggota</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col mb-3">
-                        <label for="nama" class="form-label">Nama</label>
-                        <input type="text" id="nama" class="form-control" name="namaAset"
-                            placeholder="masukan nama aset" autofocus required />
+                        <label for="email" class="form-label">email</label>
+                        <input type="text" id="email" class="form-control" name="email"
+                            placeholder="masukan email" autofocus required />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col mb-3">
-                        <label for="jumlah" class="form-label">jumlah aset</label>
-                        <input type="number" id="jumlah" class="form-control" name="jumlahAset"
-                            placeholder="masukan jumlah aset yang akan diinput (angka)" required />
+                        <label for="password" class="form-label">password</label>
+                        <input type="password" id="password" class="form-control" name="password"
+                            placeholder="masukan password" autofocus required />
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col mb-3">
+                        <label for="nik" class="form-label">Nik</label>
+                        <input type="text" id="nik" class="form-control" name="nik"
+                            placeholder="masukan nik" autofocus required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nama" class="form-label">Nama</label>
+                        <input type="text" id="nama" class="form-control" name="nama"
+                            placeholder="masukan nama" autofocus required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nohp" class="form-label">no hp</label>
+                        <input type="text" id="nohp" class="form-control" name="nohp"
+                            placeholder="masukan nomor hp, contoh 081223344556" required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="alamat" class="form-label">alamat</label>
+                        <input type="text" id="alamat" class="form-control" name="alamat"
+                            placeholder="masukan alamat lengkap, contoh jl. soekarno-hatta nomor 100, rt 15 rw 05 " required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="tempatLahir" class="form-label">Tempat Lahir</label>
+                        <input type="text" id="tempatLahir" class="form-control" name="tempatLahir"
+                            placeholder="masukan kota/kabupaten tempat lahir " required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
+                        <input type="date" id="tanggalLahir" class="form-control" name="tanggalLahir"
+                            placeholder="masukan kota/kabupaten tanggal lahir " required />
+                    </div>
+                </div>
+                {{-- <div class="row">
                     <div class="col mb-3">
                         <label for="fotoaset" class="form-label">foto aset</label>
                         <input type="file" id="fotoaset" class="form-control" name="fotoaset" required />
                     </div>
-                </div>
+                </div> --}}
                 {{-- <div class="row">
                     <div class="col mb-3">
                         <label for="jenkel" class="form-label">Kategori Aset</label>

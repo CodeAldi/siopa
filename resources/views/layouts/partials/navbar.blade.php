@@ -10,7 +10,7 @@
         <!-- Search -->
         <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center">
-                <marquee  direction="right">test</marquee>
+                <marquee  direction="left"><a href="#" class="link">Pengumuman : gotong royong hari minggu 09 februari 2025 mulai pukul 07:00 wib</a> &nbsp; | &nbsp; <a href="#">uang kas : Rp.1.500.000,-</a>&nbsp; | &nbsp;<a href="#">Iuran :  pengumpulan dana kegiatan peringatan hari isra' mi'raj </a></marquee>
             </div>
         </div>
 
