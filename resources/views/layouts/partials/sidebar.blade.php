@@ -47,8 +47,32 @@
             </ul>
         </li>
         @elseif (Auth()->user()->hasRole('pengurus'))
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-briefcase"></i>
+                <div>Management program kerja</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-money"></i>
+                <div>Management Uang cash</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-calendar-event"></i>
+                <div>Management Jadwal Kegiatan</div>
+            </a>
+        </li>
         @elseif (Auth()->user()->hasRole('anggota'))
         @elseif (Auth()->user()->hasRole('masyarakat'))
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-calendar-event"></i>
+                <div>Jadwal Kegiatan</div>
+            </a>
+        </li>
         @endif
 
     </ul>
