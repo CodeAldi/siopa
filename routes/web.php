@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthenController;
 use App\Http\Controllers\ManagementAnggotaController;
 use App\Http\Controllers\ManagementPengurusController;
 use App\Http\Controllers\ManagementMasyarakatController;
+use App\Http\Controllers\ProgramKerjaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +35,7 @@ Route::controller(ManagementPengurusController::class)->middleware(['auth', 'rol
 });
 Route::controller(ManagementMasyarakatController::class)->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/management-masyarakat', 'index')->name('admin.management.masyarakat.index');
+});
+Route::controller(ProgramKerjaController::class)->middleware(['auth','role:pengurus'])->group(function(){
+    Route::get('/pengurus/program-kerja/index','index')->name('pengurus.programKerja.index');
 });

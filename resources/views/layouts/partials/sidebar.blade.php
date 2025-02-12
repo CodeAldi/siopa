@@ -47,8 +47,8 @@
             </ul>
         </li>
         @elseif (Auth()->user()->hasRole('pengurus'))
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('pengurus.programKerja.*')) ? 'active' : '' }}">
+            <a href="{{ route('pengurus.programKerja.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-briefcase"></i>
                 <div>Management program kerja</div>
             </a>
