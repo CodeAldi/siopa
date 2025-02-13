@@ -44,4 +44,7 @@ Route::controller(ManagementMasyarakatController::class)->middleware(['auth', 'r
 });
 Route::controller(ProgramKerjaController::class)->middleware(['auth','role:pengurus'])->group(function(){
     Route::get('/pengurus/program-kerja/index','index')->name('pengurus.programKerja.index');
+    Route::post('/pengurus/program-kerja/tambah','store')->name('pengurus.programKerja.store');
+    Route::patch('/pengurus/program-kerja/update','update')->name('pengurus.programKerja.update');
+    Route::delete('/pengurus/program-kerja/delete','delete')->name('pengurus.programKerja.delete');
 });
