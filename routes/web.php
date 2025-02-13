@@ -35,6 +35,7 @@ Route::controller(ManagementAnggotaController::class)->middleware(['auth','role:
 });
 Route::controller(ManagementPengurusController::class)->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/management-pengurus', 'index')->name('admin.management.pengurus.index');
+    Route::post('/admin/management-pengurus/tambah', 'store')->name('admin.management.pengurus.store');
 });
 Route::controller(ManagementMasyarakatController::class)->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/management-masyarakat', 'index')->name('admin.management.masyarakat.index');
