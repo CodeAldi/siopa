@@ -28,7 +28,7 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    @forelse ($kosong as $item)
+                    @forelse ($programkerja as $item)
                     <tr>
                         <td>{{ $item->user->name }}</td>
                         <td>{{ $item->aset->nama }}</td>
@@ -67,7 +67,7 @@
                         <td>1</td>
                         <td>peringatan isra' mijraj</td>
                         <td>kegiatan memperingati hari istra' mi'raj pada hari minggu,09 februai 2025 ba'da shalat isya di masjid</td>
-                        <td><span class="bg-info text-white rounded-pill p-2">rohani</span></td>
+                        <td><span class="bg-success text-white rounded-pill p-2">rohani</span></td>
                         <td class="text-center">
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -93,68 +93,73 @@
 <!-- Modal untuk create -->
 <div class="modal fade" id="modalCreate" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <form class="modal-content" action="#" method="POST" enctype="multipart/form-data">
+        <form class="modal-content" action="#" method="POST">
             @csrf
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCreateTitle">Tambah Anggota</h5>
+                <h5 class="modal-title" id="modalCreateTitle">Tambah Program kerja</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col mb-3">
-                        <label for="email" class="form-label">email</label>
-                        <input type="text" id="email" class="form-control" name="email" placeholder="masukan email"
+                        <label for="judul" class="form-label">program kerja</label>
+                        <input type="text" id="judul" class="form-control" name="judul" placeholder="masukan judul"
                             autofocus required />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col mb-3">
-                        <label for="password" class="form-label">password</label>
-                        <input type="password" id="password" class="form-control" name="password"
-                            placeholder="masukan password" autofocus required />
+                        <label for="pic" class="form-label">Penanggung Jawab</label>
+                        <select name="pic" id="pic" class="form-select">
+                            <option value="0" hidden> pilih Penanggung jawab kegiatan</option>
+                            @forelse ($penanggungJawab as $item)
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                            @empty
+                                
+                            @endforelse
+                        </select>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col mb-3">
-                        <label for="nik" class="form-label">Nik</label>
-                        <input type="text" id="nik" class="form-control" name="nik" placeholder="masukan nik" autofocus
+                        <label for="kategori" class="form-label">Kategori Kegiatan</label>
+                        <select name="kategori" id="kategori" class="form-select">
+                            <option value="0" hidden> pilih kategori <kegiatan></kegiatan></option>
+                            <option value="seni">seni</option>
+                            <option value="rohani">rohani</option>
+                            <option value="budaya">budaya</option>
+                            <option value="sosial">sosial</option>
+                            <option value="olahraga">olahraga</option>
+                            <option value="kejuaraan">kejuaraan</option>
+                            <option value="pendidikan">pendidikan</option>
+                            <option value="kewirausahaan">kewirausahaan</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="lokasi" class="form-label">lokasi kegiatan</label>
+                        <input type="text" id="lokasi" class="form-control" name="lokasi"
+                            placeholder="masukan lokasi" autofocus required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="tanggal" class="form-label">tanggal kegiatan</label>
+                        <input type="date" id="tanggal" class="form-control" name="tanggal" autofocus
                             required />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col mb-3">
-                        <label for="nama" class="form-label">Nama</label>
-                        <input type="text" id="nama" class="form-control" name="nama" placeholder="masukan nama"
-                            autofocus required />
+                        <label for="lama" class="form-label">Durasi kegiatan (hari) </label>
+                        <input type="number" id="lama" class="form-control" name="lama" autofocus required />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col mb-3">
-                        <label for="nohp" class="form-label">no hp</label>
-                        <input type="text" id="nohp" class="form-control" name="nohp"
-                            placeholder="masukan nomor hp, contoh 081223344556" required />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col mb-3">
-                        <label for="alamat" class="form-label">alamat</label>
-                        <input type="text" id="alamat" class="form-control" name="alamat"
-                            placeholder="masukan alamat lengkap, contoh jl. soekarno-hatta nomor 100, rt 15 rw 05 "
-                            required />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col mb-3">
-                        <label for="tempatLahir" class="form-label">Tempat Lahir</label>
-                        <input type="text" id="tempatLahir" class="form-control" name="tempatLahir"
-                            placeholder="masukan kota/kabupaten tempat lahir " required />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col mb-3">
-                        <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
-                        <input type="date" id="tanggalLahir" class="form-control" name="tanggalLahir"
-                            placeholder="masukan kota/kabupaten tanggal lahir " required />
+                        <label for="deskripsi" class="form-label">Isi atau Deskripsi kegiatan</label>
+                        <textarea name="deskripsi" class="form-control" id="deskripsi" cols="30" rows="10"></textarea>
                     </div>
                 </div>
                 {{-- <div class="row">
@@ -163,19 +168,7 @@
                         <input type="file" id="fotoaset" class="form-control" name="fotoaset" required />
                     </div>
                 </div> --}}
-                {{-- <div class="row">
-                    <div class="col mb-3">
-                        <label for="jenkel" class="form-label">Kategori Aset</label>
-                        <select name="jenis_kelamin" id="jenis_kelamin" class="form-select">
-                            <option value="0" hidden> pilih jenis Kategori aset</option>
-                            <option value="laki laki">elektronik</option>
-                            <option value="perempuan">alat tulis</option>
-                            <option value="perempuan">alat tulis</option>
-                            <option value="perempuan">alat tulis</option>
-                            <option value="perempuan">alat tulis</option>
-                        </select>
-                    </div>
-                </div> --}}
+                
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
