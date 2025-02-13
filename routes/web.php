@@ -29,6 +29,9 @@ Route::controller(AuthenController::class)->group(function(){
 Route::get('/',[HomeController::class,'index'])->middleware('auth')->name('home');
 Route::controller(ManagementAnggotaController::class)->middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/management-anggota','index')->name('admin.management.anggota.index');
+    Route::post('/admin/management-anggota/tambah','store')->name('admin.management.anggota.store');
+    Route::patch('/admin/management-anggota/update','update')->name('admin.management.anggota.update');
+    Route::delete('/admin/management-anggota/delete','delete')->name('admin.management.anggota.delete');
 });
 Route::controller(ManagementPengurusController::class)->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/management-pengurus', 'index')->name('admin.management.pengurus.index');

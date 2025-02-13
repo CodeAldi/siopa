@@ -23,7 +23,7 @@
         </li>
         @if (Auth()->user()->hasRole('admin'))
         {{-- user admin --}}
-        <li class="menu-item {{ (Request::RouteIs('admin.management.*')) ? 'active open' : '' }}">
+        <li class="menu-item open {{ (Request::RouteIs('admin.management.*')) ? 'active' : '' }}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="User interface">Management User</div>

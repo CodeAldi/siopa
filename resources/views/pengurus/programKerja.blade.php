@@ -65,9 +65,9 @@
                     @empty
                     <tr>
                         <td>1</td>
-                        <td>budi</td>
-                        <td>laki laki</td>
-                        <td>jl soekarno-hatta nomor 100 rt 15 rw 05</td>
+                        <td>peringatan isra' mijraj</td>
+                        <td>kegiatan memperingati hari istra' mi'raj pada hari minggu,09 februai 2025 ba'da shalat isya di masjid</td>
+                        <td><span class="bg-info text-white rounded-pill p-2">rohani</span></td>
                         <td class="text-center">
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
