@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@push('page-css')
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+@endpush
 @section('content')
 @if (Auth()->user()->hasRole('admin'))
 
@@ -24,5 +27,45 @@
         </div>
     </div>
 </div>
+@elseif (Auth()->user()->hasRole('pengurus'))
+<div class="container mt-2">
+    <div class="card">
+        <h5 class="card-header">Keuangan</h5>
+        <div class="card-body">
+            total uang kas :
+        </div>
+    </div>
+</div>
+<div class="container mt-2">
+    <div class="card rounded-pill">
+        <h5 class="card-header text-center text-uppercase">Jadwal Kegiatan</h5>
+    </div>
+</div>
+<div class="container mt-2">
+    <div class="card">
+        <div class="card-body">
+            <div id='calendar'></div>   
+        </div>
+    </div>
+</div>
 @endif
 @endsection
+@push('page-js')
+@if (Auth()->user()->hasRole('pengurus'))
+    
+    <script>
+        var dataEvent = @json($event);
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+              initialView: 'dayGridMonth',
+              events: dataEvent,
+            });
+            calendar.render();
+          });
+
+    </script>
+@else
+    
+@endif
+@endpush

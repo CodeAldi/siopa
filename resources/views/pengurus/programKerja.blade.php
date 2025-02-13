@@ -4,11 +4,11 @@
     <div class="card shadow">
         <div class="card-header row">
             <h5 class="card-title col-8 mt-3">
-                Halo Pengurus, selamat datang di Manajemen Program Kerja !
+                Halo Pengurus, selamat datang di Manajemen kegiatan Organisasi !
             </h5>
             <button type="button" class="btn btn-primary col-4" data-bs-toggle="modal" data-bs-target="#modalCreate">
                 <i class="tf-icons bx bx-plus-circle"></i>
-                Tambah Program Kerja
+                Tambah kegiatan Organisasi
             </button>
         </div>
     </div>
@@ -68,13 +68,13 @@
         <form class="modal-content" action="{{ route('pengurus.programKerja.store') }}" method="POST">
             @csrf
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCreateTitle">Tambah Program kerja</h5>
+                <h5 class="modal-title" id="modalCreateTitle">Tambah Kegiatan Organisasi</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col mb-3">
-                        <label for="judul" class="form-label">program kerja</label>
+                        <label for="judul" class="form-label">Kegiatan Organisasi</label>
                         <input type="text" id="judul" class="form-control" name="judul" placeholder="masukan judul"
                             autofocus required />
                     </div>
@@ -124,8 +124,8 @@
                 </div>
                 <div class="row">
                     <div class="col mb-3">
-                        <label for="lama" class="form-label">Durasi kegiatan (hari) </label>
-                        <input type="number" id="lama" class="form-control" name="lama_kegiatan" autofocus required />
+                        {{-- <label for="lama" class="form-label">Durasi kegiatan (hari) </label> --}}
+                        {{-- <input type="number" id="lama" class="form-control" name="lama_kegiatan" autofocus required /> --}}
                     </div>
                 </div>
                 <div class="row">
@@ -159,7 +159,7 @@
             @method('PATCH')
             @csrf
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCreateTitle">Edit Program kerja</h5>
+                <h5 class="modal-title" id="modalCreateTitle">Edit Kegiatan Organisasi</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -171,7 +171,7 @@
                 </div>
                 <div class="row">
                     <div class="col mb-3">
-                        <label for="judul" class="form-label">program kerja</label>
+                        <label for="judul" class="form-label">Kegiatan Organisasi</label>
                         <input type="text" id="Editjudul" class="form-control" name="judul" autofocus required />
                     </div>
                 </div>
@@ -219,8 +219,8 @@
                 </div>
                 <div class="row">
                     <div class="col mb-3">
-                        <label for="lama" class="form-label">Durasi kegiatan (hari) </label>
-                        <input type="number" id="Editlama_kegiatan" class="form-control" name="lama_kegiatan" autofocus required />
+                        {{-- <label for="lama" class="form-label">Durasi kegiatan (hari) </label> --}}
+                        {{-- {{-- <input type="number" id="Editlama_kegiatan" class="form-control" name="lama_kegiatan" autofocus required /> --}} --}}
                     </div>
                 </div>
                 <div class="row">
@@ -312,7 +312,7 @@
         document.getElementById("Editkategori").value = myjsonEdit.kategori;
         document.getElementById("Editlokasi").value = myjsonEdit.lokasi;
         document.getElementById("Edittanggal_kegiatan").value = myjsonEdit.tanggal_kegiatan;
-        document.getElementById("Editlama_kegiatan").value = myjsonEdit.lama_kegiatan;
+        // // document.getElementById("Editlama_kegiatan").value = myjsonEdit.lama_kegiatan;
         document.getElementById("Editdeskripsi").value = myjsonEdit.deskrispsi;
     }
     let table = new DataTable('#dataAset', {

@@ -50,19 +50,19 @@
         <li class="menu-item {{ (Request::RouteIs('pengurus.programKerja.*')) ? 'active' : '' }}">
             <a href="{{ route('pengurus.programKerja.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-briefcase"></i>
-                <div>Management program kerja</div>
+                <div>Management Kegiatan</div>
             </a>
         </li>
         <li class="menu-item">
             <a href="#" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-money"></i>
-                <div>Management Uang cash</div>
+                <div>Management Uang kas</div>
             </a>
         </li>
         <li class="menu-item">
             <a href="#" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-calendar-event"></i>
-                <div>Management Jadwal Kegiatan</div>
+                <i class="menu-icon tf-icons bx bx-bell"></i>
+                <div>Management Pengumuman</div>
             </a>
         </li>
         @elseif (Auth()->user()->hasRole('anggota'))

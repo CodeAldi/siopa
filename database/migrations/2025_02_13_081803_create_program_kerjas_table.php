@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('kategori');
             $table->string('lokasi');
             $table->date('tanggal_kegiatan');
-            $table->integer('lama_kegiatan')->default(1);
             $table->text('deskrispsi');
             $table->timestamps();
         });
