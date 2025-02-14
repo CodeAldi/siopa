@@ -53,6 +53,12 @@
                 <div>Management Kegiatan Organisasi</div>
             </a>
         </li>
+        <li class="menu-item {{ (Request::RouteIs('pengurus.lpj.*')) ? 'active' : '' }}">
+            <a href="{{ route('pengurus.lpj.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-report"></i>
+                <div>LPJ kegiatan</div>
+            </a>
+        </li>
         <li class="menu-item {{ (Request::RouteIs('pengurus.keuangan.*')) ? 'active' : '' }}">
             <a href="{{ route('pengurus.keuangan.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-dollar-circle"></i>

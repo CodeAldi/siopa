@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthenController;
 use App\Http\Controllers\DetailIuranController;
 use App\Http\Controllers\IuranController;
 use App\Http\Controllers\KeuanganController;
+use App\Http\Controllers\LpjController;
 use App\Http\Controllers\ManagementAnggotaController;
 use App\Http\Controllers\ManagementPengurusController;
 use App\Http\Controllers\ManagementMasyarakatController;
@@ -73,4 +74,8 @@ Route::controller(IuranController::class)->middleware(['auth','role:pengurus'])-
 Route::controller(DetailIuranController::class)->middleware(['auth','role:pengurus'])->group(function(){
     Route::get('pengurus/detail-iuran/index', 'index')->name('pengurus.iuran.detail.index');
     Route::post('pengurus/detail-iuran/setujui', 'setujui')->name('pengurus.iuran.detail.setujui');
+});
+Route::controller(LpjController::class)->middleware(['auth','role:pengurus'])->group(function(){
+    Route::get('pengurus/Lpj/index','index')->name('pengurus.lpj.index');
+    Route::post('pengurus/Lpj/tambah','store')->name('pengurus.lpj.store');
 });
