@@ -50,13 +50,13 @@
         <li class="menu-item {{ (Request::RouteIs('pengurus.programKerja.*')) ? 'active' : '' }}">
             <a href="{{ route('pengurus.programKerja.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-briefcase"></i>
-                <div>Management Kegiatan</div>
+                <div>Management Kegiatan Organisasi</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-money"></i>
-                <div>Management Uang kas</div>
+        <li class="menu-item {{ (Request::RouteIs('pengurus.keuangan.*')) ? 'active' : '' }}">
+            <a href="{{ route('pengurus.keuangan.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-dollar-circle"></i>
+                <div>Management Keuangan</div>
             </a>
         </li>
         <li class="menu-item">

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthenController;
+use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\ManagementAnggotaController;
 use App\Http\Controllers\ManagementPengurusController;
 use App\Http\Controllers\ManagementMasyarakatController;
@@ -47,4 +48,8 @@ Route::controller(ProgramKerjaController::class)->middleware(['auth','role:pengu
     Route::post('/pengurus/program-kerja/tambah','store')->name('pengurus.programKerja.store');
     Route::patch('/pengurus/program-kerja/update','update')->name('pengurus.programKerja.update');
     Route::delete('/pengurus/program-kerja/delete','delete')->name('pengurus.programKerja.delete');
+});
+Route::controller(KeuanganController::class)->middleware(['auth','role:pengurus'])->group(function(){
+    Route::get('/pengurus/keuangan/index','index')->name('pengurus.keuangan.index');
+    Route::post('/pengurus/keuangan/tambah','store')->name('pengurus.keuangan.store');
 });

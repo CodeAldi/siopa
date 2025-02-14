@@ -32,7 +32,7 @@
     <div class="card">
         <h5 class="card-header">Keuangan</h5>
         <div class="card-body">
-            total uang kas :
+            Total Uang Kas : Rp.{{ number_format($total) }}
         </div>
     </div>
 </div>
