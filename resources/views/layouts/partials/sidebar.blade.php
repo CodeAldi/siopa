@@ -71,7 +71,7 @@
                 <div>Management Pengumuman</div>
             </a>
         </li>
-        <li class="menu-item  ">
+        <li class="menu-item {{ (Request::RouteIs('pengurus.iuran.*')) ? 'active' : '' }} ">
             <a href="{{ route('pengurus.iuran.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-money"></i>
                 <div>Management Iuran Kas Anggota</div>
