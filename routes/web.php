@@ -87,4 +87,7 @@ Route::controller(LpjController::class)->middleware(['auth','role:pengurus'])->g
 Route::controller(ProgramKerjaController::class)->middleware(['auth','role:anggota'])->group(function(){
     Route::get('anggota/kegiatan/index','index')->name('anggota.kegiatan.index');
 });
+Route::controller(PengumumanController::class)->middleware(['auth','role:anggota'])->group(function(){
+    Route::get('anggota/pengumuman/index','index')->name('anggota.pengumuman.index');
+});
 // Route anggota selesai

@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('content')
+@if (Auth()->user()->hasRole('pengurus'))
 <div class="container">
     <div class="card shadow">
         <div class="card-header row">
@@ -13,6 +14,7 @@
         </div>
     </div>
 </div>
+@endif
 <div class="container mt-2">
     <div class="card">
 
@@ -45,7 +47,7 @@
                                         data-bs-toggle="modal" data-bs-target="#modalLihat" data-index="{{ $item }}"
                                         onclick="modalLihat(this)"><i class="bx bx-info-circle me-1"></i>
                                         Lihat</button>
-
+                                    @if (Auth()->user()->hasRole('pengurus'))
                                     <button type="submit" class="dropdown-item btn btn-success mb-1 text-white"
                                         data-bs-toggle="modal" data-bs-target="#modalEdit" data-index="{{ $item }}"
                                         onclick="modalEdit(this)"><i class="bx bx-pencil me-1"></i>
@@ -54,6 +56,7 @@
                                     <button class="dropdown-item btn btn-danger mb-1 text-white" data-bs-toggle="modal"
                                         data-bs-target="#modalDelete" data-index="{{ $item }}"
                                         onclick="modalDelete(this)"><i class="bx bx-x-circle me-1"></i>Hapus</button>
+                                    @endif
                                 </div>
                             </div>
                         </td>

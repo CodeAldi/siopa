@@ -90,8 +90,8 @@
                 <div>Lihat dan bayar uang kas</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('anggota.pengumuman.*')) ? 'active' : '' }}">
+            <a href="{{ route('anggota.pengumuman.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-news"></i>
                 <div>Lihat Pengumuman</div>
             </a>
