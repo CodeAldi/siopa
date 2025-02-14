@@ -149,10 +149,150 @@
         </form>
     </div>
 </div>
+<!-- Modal untuk Edit -->
+<div class="modal fade" id="modalEdit" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <form class="modal-content" action="{{ route('pengurus.keuangan.update') }}" method="POST">
+            @method('PATCH')
+            @csrf
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCreateTitle">Edit Catatan keuangan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="id" class="form-label">id</label>
+                        <input type="text" id="Editid" class="form-control" name="id" placeholder="masukan id" autofocus
+                            required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="judul" class="form-label">Judul</label>
+                        <input type="text" id="Editjudul" class="form-control" name="judul" placeholder="masukan judul" autofocus
+                            required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="kategori" class="form-label">Kategori</label>
+                        <select name="kategori" id="Editkategori" class="form-select">
+                            <option value="0" hidden> pilih kategori</option>
+                            <option value="masuk">masuk</option>
+                            <option value="keluar">keluar</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="keterangan" class="form-label">keterangan</label>
+                        <input type="text" id="Editketerangan" class="form-control" name="keterangan" placeholder="masukan keterangan"
+                            autofocus required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="tanggal" class="form-label">tanggal</label>
+                        <input type="date" id="Edittanggal" class="form-control" name="tanggal" autofocus required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nominal" class="form-label">nominal</label>
+                        <input type="number" id="Editnominal" class="form-control" name="nominal" autofocus required />
+                    </div>
+                </div>
+                {{-- <div class="row">
+                    <div class="col mb-3">
+                        <label for="fotoaset" class="form-label">foto aset</label>
+                        <input type="file" id="fotoaset" class="form-control" name="fotoaset" required />
+                    </div>
+                </div> --}}
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{{-- modal warning delete --}}
+<div class="modal fade" id="modalDelete" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <form class="modal-content" action="{{ route('pengurus.keuangan.delete') }}" method="POST">
+            @method('DELETE')
+            @csrf
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCreateTitle">Yakin Hapus Catatan Keuangan ?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="judul" class="form-label">judul</label>
+                        <input type="text" id="Hapusjudul" class="form-control" name="judul" readonly />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="id" class="form-label">id</label>
+                        <input type="text" id="Hapusid" class="form-control" name="id" readonly />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nominal" class="form-label">nominal</label>
+                        <input type="text" id="Hapusnominal" class="form-control" name="nominal" readonly />
+                    </div>
+                </div>
+                {{-- <div class="row">
+                    <div class="col mb-3">
+                        <label for="fotoaset" class="form-label">foto aset</label>
+                        <input type="file" id="fotoaset" class="form-control" name="fotoaset" required />
+                    </div>
+                </div> --}}
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 @endsection
 @push('page-js')
 <script>
+    function modalDelete(item) {
+    let indexnya = item.getAttribute("data-index");
+    const myjson = JSON.parse(indexnya);
+    document.getElementById("Hapusid").value = myjson.id;
+    document.getElementById("Hapusjudul").value = myjson.judul;
+    document.getElementById("Hapusnominal").value = myjson.nominal;
+    // document.getElementById("HapusNik ").value = myjson.nik;
+    // console.log(myjson);
     
+    }
+    function modalEdit(item) {
+    let indexnya = item.getAttribute("data-index");
+    const myjsonEdit = JSON.parse(indexnya);
+    // console.log(myjsonEdit);
+    document.getElementById("Editid").value = myjsonEdit.id;
+    document.getElementById("Editjudul").value = myjsonEdit.judul;
+    document.getElementById("Editkategori").value = myjsonEdit.kategori;
+    document.getElementById("Editketerangan").value = myjsonEdit.keterangan;
+    document.getElementById("Edittanggal").value = myjsonEdit.tanggal;
+    document.getElementById("Editnominal").value = myjsonEdit.nominal;
+    // // document.getElementById("Editlama_kegiatan").value = myjsonEdit.lama_kegiatan;
+    document.getElementById("Editdeskripsi").value = myjsonEdit.deskrispsi;
+    }
     let table = new DataTable('#dataAset', {
         // options
         });

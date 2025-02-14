@@ -52,4 +52,6 @@ Route::controller(ProgramKerjaController::class)->middleware(['auth','role:pengu
 Route::controller(KeuanganController::class)->middleware(['auth','role:pengurus'])->group(function(){
     Route::get('/pengurus/keuangan/index','index')->name('pengurus.keuangan.index');
     Route::post('/pengurus/keuangan/tambah','store')->name('pengurus.keuangan.store');
+    Route::patch('/pengurus/keuangan/update','update')->name('pengurus.keuangan.update');
+    Route::delete('/pengurus/keuangan/delete','delete')->name('pengurus.keuangan.delete');
 });

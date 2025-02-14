@@ -37,4 +37,19 @@ class KeuanganController extends Controller
         $keuangan->save();
         return back();
     }
+    function update(Request $request) {
+        $keuangan = Keuangan::find($request->id);
+        $keuangan->judul = $request->judul;
+        $keuangan->keterangan = $request->keterangan;
+        $keuangan->tanggal = $request->tanggal;
+        $keuangan->kategori = $request->kategori;
+        $keuangan->nominal = $request->nominal;
+        $keuangan->save();
+        return back();
+    }
+    function delete(Request $request) {
+        $keuangan = Keuangan::find($request->id);
+        $keuangan->delete();
+        return back();
+    }
 }
