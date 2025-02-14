@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthenController;
+use App\Http\Controllers\DetailIuranController;
 use App\Http\Controllers\IuranController;
 use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\ManagementAnggotaController;
@@ -68,4 +69,8 @@ Route::controller(IuranController::class)->middleware(['auth','role:pengurus'])-
     Route::post('pengurus/iuran/tambah','store')->name('pengurus.iuran.store');
     Route::patch('pengurus/iuran/update','update')->name('pengurus.iuran.update');
     Route::delete('pengurus/iuran/delete','delete')->name('pengurus.iuran.delete');
+});
+Route::controller(DetailIuranController::class)->middleware(['auth','role:pengurus'])->group(function(){
+    Route::get('pengurus/detail-iuran/index', 'index')->name('pengurus.iuran.detail.index');
+    Route::post('pengurus/detail-iuran/setujui', 'setujui')->name('pengurus.iuran.detail.setujui');
 });

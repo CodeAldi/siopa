@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailIuran;
+use App\Models\User;
 use App\Models\Iuran;
 use Illuminate\Http\Request;
 
@@ -20,6 +22,15 @@ class IuranController extends Controller
         $iuran->tanggal = $request->bulan;
         $iuran->nominal = $request->nominal;
         $iuran->save();
+        $anggota = User::where('role','anggota')->get();
+        if (count($anggota) > 0) {
+            foreach ($anggota as $key => $value) {
+                $detail = new DetailIuran();
+                $detail->iuran_id = $iuran->id;
+                $detail->anggota_id = $value->id;
+                $detail->save();
+            }
+        }
         return back();
     }
     function update(Request $request){

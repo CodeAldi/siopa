@@ -5,10 +5,11 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Enums\UserRole;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -49,5 +50,24 @@ class User extends Authenticatable
     function hasRole($role)
     {
         return $this->role == UserRole::from($role);
+    }
+
+    /**
+     * Get all of the penanggungJawab for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function penanggungJawab(): HasMany
+    {
+        return $this->hasMany(ProgramKerja::class);
+    }
+    /**
+     * Get all of the detailIuran for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function detailIuran(): HasMany
+    {
+        return $this->hasMany(DetailIuran::class);
     }
 }

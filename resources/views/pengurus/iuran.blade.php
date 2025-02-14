@@ -39,6 +39,10 @@
                                 <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
+                                <button type="submit" class="dropdown-item btn btn-primary mb-1 text-white"
+                                    data-bs-toggle="modal" data-bs-target="#modalLihat" data-index="{{ $item }}"
+                                    onclick="modalLihat(this)"><i class="bx bx-detail me-1"></i>
+                                    Detail</button>
                                 <button type="submit" class="dropdown-item btn btn-success mb-1 text-white"
                                     data-bs-toggle="modal" data-bs-target="#modalEdit" data-index="{{ $item }}"
                                     onclick="modalEdit(this)"><i class="bx bx-pencil me-1"></i>
@@ -57,6 +61,32 @@
                 @endforelse
             </tbody>
         </table>
+    </div>
+</div>
+{{-- modal untuk lihat --}}
+<div class="modal fade" id="modalLihat" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <form class="modal-content" action="{{ route('pengurus.iuran.detail.index') }}" method="GET">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCreateTitle">Pindah Ke Halaman Detail Pembayaran ?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="judul" class="form-label">judul</label>
+                        <input type="text" id="Lihatjudul" class="form-control" name="judul" readonly />
+                        <input type="text" id="Lihatid" class="form-control" name="id" hidden readonly />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        No
+                    </button>
+                    <button type="submit" class="btn btn-success">Yes</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 <!-- Modal untuk create -->
@@ -248,6 +278,12 @@
 @endsection
 @push('page-js')
 <script>
+    function modalLihat(item){
+    let indexnya = item.getAttribute("data-index");
+    const myjsonLihat = JSON.parse(indexnya);
+    document.getElementById("Lihatid").value = myjsonLihat.id;
+    document.getElementById("Lihatjudul").value = myjsonLihat.judul;
+    }
     function modalDelete(item) {
     let indexnya = item.getAttribute("data-index");
     const myjson = JSON.parse(indexnya);
