@@ -20,8 +20,7 @@ class HomeController extends Controller
             $event = [];
             foreach ($kegiatan as $key => $value) {
                 $event[$key]['title'] = $value->judul;
-                $event[$key]['start'] = $value->tanggal_kegiatan;
-                $event[$key]['color'] = 'blue'; 
+                $event[$key]['start'] = $value->tanggal_kegiatan; 
             }
             return view('home')->with('title', 'Home')->with('event',$event);
         } else {
