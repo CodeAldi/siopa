@@ -16,7 +16,7 @@ class HomeController extends Controller
             $anggota = User::where('role','anggota')->count();
             $masyarakat = User::where('role','pengurus')->count();
             return view('home')->with('title','Home')->with('pengurus',$pengurus)->with('anggota', $anggota)->with('masyarakat', $masyarakat);
-        } elseif (Auth()->user()->role == UserRole::pengurus) {
+        } else {
             $keuangan = Keuangan::all();
             $total = 0;
             $masuk = 0;
@@ -36,8 +36,6 @@ class HomeController extends Controller
                 $event[$key]['start'] = $value->tanggal_kegiatan; 
             }
             return view('home')->with('title', 'Home')->with('event',$event)->with('total',$total);
-        } else {
-            dd(Auth()->user()->role);
         }
         
     }

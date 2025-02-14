@@ -1,5 +1,7 @@
 @extends('layouts.main')
 @section('content')
+@if (Auth()->user()->hasRole('pengurus'))
+    
 <div class="container">
     <div class="card shadow">
         <div class="card-header row">
@@ -13,6 +15,7 @@
         </div>
     </div>
 </div>
+@endif
 <div class="container mt-2">
     <div class="card">
 
@@ -25,7 +28,9 @@
                         <th>tanggal kegiatan</th>
                         <th>lokasi kegiatan</th>
                         <th>kategori</th>
+                        @if (Auth()->user()->hasRole('pengurus'))
                         <th>Actions</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -36,6 +41,7 @@
                         <td>{{ $item->tanggal_kegiatan }}</td>
                         <td>{{ $item->lokasi }}</td>
                         <td>{{ $item->kategori }}</td>
+                        @if (Auth()->user()->hasRole('pengurus'))
                         <td class="text-center">
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -52,6 +58,7 @@
                                 </div>
                             </div>
                         </td>
+                        @endif
                     </tr>
 
                     @empty

@@ -27,7 +27,7 @@
         </div>
     </div>
 </div>
-@elseif (Auth()->user()->hasRole('pengurus'))
+@else
 <div class="container mt-2">
     <div class="card">
         <h5 class="card-header">Keuangan</h5>
@@ -51,8 +51,6 @@
 @endif
 @endsection
 @push('page-js')
-@if (Auth()->user()->hasRole('pengurus'))
-    
     <script>
         var dataEvent = @json($event);
         document.addEventListener('DOMContentLoaded', function() {
@@ -75,7 +73,4 @@
           });
 
     </script>
-@else
-    
-@endif
 @endpush

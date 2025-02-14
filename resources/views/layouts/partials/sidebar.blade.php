@@ -71,18 +71,42 @@
                 <div>Management Pengumuman</div>
             </a>
         </li>
-        <li class="menu-item {{ (Request::RouteIs('pengurus.iuran.*')) ? 'active' : '' }}">
+        <li class="menu-item  ">
             <a href="{{ route('pengurus.iuran.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-money"></i>
                 <div>Management Iuran Kas Anggota</div>
             </a>
         </li>
         @elseif (Auth()->user()->hasRole('anggota'))
+        <li class="menu-item {{ (Request::RouteIs('anggota.kegiatan.*')) ? 'active' : '' }}">
+            <a href="{{ route('anggota.kegiatan.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-calendar-event"></i>
+                <div>Lihat Kegiatan</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-dollar-circle"></i>
+                <div>Lihat dan bayar uang kas</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-news"></i>
+                <div>Lihat Pengumuman</div>
+            </a>
+        </li>
         @elseif (Auth()->user()->hasRole('masyarakat'))
         <li class="menu-item">
             <a href="#" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-calendar-event"></i>
                 <div>Jadwal Kegiatan</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-news"></i>
+                <div>Lihat Pengumuman</div>
             </a>
         </li>
         @endif

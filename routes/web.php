@@ -32,6 +32,7 @@ Route::controller(AuthenController::class)->group(function(){
     Route::post('/logout','logout')->middleware('auth')->name('auth.logout');
 });
 Route::get('/',[HomeController::class,'index'])->middleware('auth')->name('home');
+// Route admin mulai
 Route::controller(ManagementAnggotaController::class)->middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/management-anggota','index')->name('admin.management.anggota.index');
     Route::post('/admin/management-anggota/tambah','store')->name('admin.management.anggota.store');
@@ -47,6 +48,8 @@ Route::controller(ManagementMasyarakatController::class)->middleware(['auth', 'r
     Route::post('/admin/management-masyarakat/tambah', 'store')->name('admin.management.masyarakat.store');
 
 });
+// Route admin berakhir
+// Route pengurus mulai
 Route::controller(ProgramKerjaController::class)->middleware(['auth','role:pengurus'])->group(function(){
     Route::get('/pengurus/program-kerja/index','index')->name('pengurus.programKerja.index');
     Route::post('/pengurus/program-kerja/tambah','store')->name('pengurus.programKerja.store');
@@ -79,3 +82,9 @@ Route::controller(LpjController::class)->middleware(['auth','role:pengurus'])->g
     Route::get('pengurus/Lpj/index','index')->name('pengurus.lpj.index');
     Route::post('pengurus/Lpj/tambah','store')->name('pengurus.lpj.store');
 });
+// Route pengurus selesai
+// Route anggota mulai
+Route::controller(ProgramKerjaController::class)->middleware(['auth','role:anggota'])->group(function(){
+    Route::get('anggota/kegiatan/index','index')->name('anggota.kegiatan.index');
+});
+// Route anggota selesai
