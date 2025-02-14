@@ -84,10 +84,16 @@
                 <div>Lihat Kegiatan</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('anggota.kas.*')) ? 'active' : '' }}">
+            <a href="{{ route('anggota.kas.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-dollar-circle"></i>
-                <div>Lihat dan bayar uang kas</div>
+                <div>Lihat uang kas</div>
+            </a>
+        </li>
+        <li class="menu-item {{ (Request::RouteIs('anggota.bayarkas.*')) ? 'active' : '' }}">
+            <a href="{{ route('anggota.bayarkas.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-money"></i>
+                <div>Bayar uang kas</div>
             </a>
         </li>
         <li class="menu-item {{ (Request::RouteIs('anggota.pengumuman.*')) ? 'active' : '' }}">

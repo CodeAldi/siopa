@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthenController;
+use App\Http\Controllers\BayarKasController;
 use App\Http\Controllers\DetailIuranController;
 use App\Http\Controllers\IuranController;
 use App\Http\Controllers\KeuanganController;
@@ -89,5 +90,12 @@ Route::controller(ProgramKerjaController::class)->middleware(['auth','role:anggo
 });
 Route::controller(PengumumanController::class)->middleware(['auth','role:anggota'])->group(function(){
     Route::get('anggota/pengumuman/index','index')->name('anggota.pengumuman.index');
+});
+Route::controller(KeuanganController::class)->middleware(['auth','role:anggota'])->group(function(){
+    Route::get('anggota/kas/index','index')->name('anggota.kas.index');
+});
+Route::controller(BayarKasController::class)->middleware(['auth','role:anggota'])->group(function(){
+    Route::get('anggota/bayar-kas/index','index')->name('anggota.bayarkas.index');
+    Route::post('anggota/bayar-kas/store','store')->name('anggota.bayarkas.store');
 });
 // Route anggota selesai

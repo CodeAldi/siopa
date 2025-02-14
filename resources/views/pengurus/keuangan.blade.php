@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('content')
+@if (Auth()->user()->hasRole('pengurus'))
 <div class="card shadow">
     <div class="card-header row">
         <h5 class="card-title col-8 mt-3">
@@ -11,6 +12,7 @@
         </button>
     </div>
 </div>
+@endif
 <div class="row mt-2">
     <div class="col-4">
         <div class="card bg-primary">
@@ -45,7 +47,9 @@
                     <th>tanggal</th>
                     <th>kategori</th>
                     <th>Nominal</th>
+                    @if (Auth()->user()->hasRole('pengurus'))
                     <th>Actions</th>
+                    @endif
                 </tr>
             </thead>
             <tbody class="table-border-bottom-0">
@@ -56,6 +60,7 @@
                     <td>{{ $item->tanggal }}</td>
                     <td>{{ $item->kategori }}</td>
                     <td class="text-end">Rp{{ number_format($item->nominal) }}</td>
+                    @if (Auth()->user()->hasRole('pengurus'))
                     <td class="text-center">
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -73,6 +78,7 @@
                             </div>
                         </div>
                     </td>
+                    @endif
                 </tr>
 
                 @empty
