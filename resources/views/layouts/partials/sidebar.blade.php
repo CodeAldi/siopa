@@ -103,16 +103,22 @@
             </a>
         </li>
         @elseif (Auth()->user()->hasRole('masyarakat'))
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('masyarakat.kegiatan.*')) ? 'active' : '' }}">
+            <a href="{{ route('masyarakat.kegiatan.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-calendar-event"></i>
                 <div>Jadwal Kegiatan</div>
             </a>
         </li>
         <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('masyarakat.pengumuman.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-news"></i>
                 <div>Lihat Pengumuman</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('masyarakat.kas.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-dollar"></i>
+                <div>Lihat Keuangan</div>
             </a>
         </li>
         @endif

@@ -99,3 +99,14 @@ Route::controller(BayarKasController::class)->middleware(['auth','role:anggota']
     Route::post('anggota/bayar-kas/store','store')->name('anggota.bayarkas.store');
 });
 // Route anggota selesai
+// Route masyarakat mulai
+Route::controller(ProgramKerjaController::class)->middleware(['auth', 'role:masyarakat'])->group(function () {
+    Route::get('masyarakat/kegiatan/index', 'index')->name('masyarakat.kegiatan.index');
+});
+Route::controller(PengumumanController::class)->middleware(['auth', 'role:masyarakat'])->group(function () {
+    Route::get('masyarakat/pengumuman/index', 'index')->name('masyarakat.pengumuman.index');
+});
+Route::controller(KeuanganController::class)->middleware(['auth', 'role:masyarakat'])->group(function () {
+    Route::get('masyarakat/kas/index', 'index')->name('masyarakat.kas.index');
+});
+// Route masyarakat selesai

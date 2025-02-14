@@ -50,6 +50,7 @@
 </div>
 @endif
 @endsection
+@if (!Auth()->user()->hasRole('admin'))
 @push('page-js')
     <script>
         var dataEvent = @json($event);
@@ -74,3 +75,4 @@
 
     </script>
 @endpush
+@endif

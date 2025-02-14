@@ -14,7 +14,7 @@ class HomeController extends Controller
         if (Auth()->user()->role == UserRole::admin) {
             $pengurus = User::where('role','pengurus')->count();
             $anggota = User::where('role','anggota')->count();
-            $masyarakat = User::where('role','pengurus')->count();
+            $masyarakat = User::where('role','masyarakat')->count();
             return view('home')->with('title','Home')->with('pengurus',$pengurus)->with('anggota', $anggota)->with('masyarakat', $masyarakat);
         } else {
             $keuangan = Keuangan::all();
