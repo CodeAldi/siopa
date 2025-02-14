@@ -7,6 +7,7 @@ use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\ManagementAnggotaController;
 use App\Http\Controllers\ManagementPengurusController;
 use App\Http\Controllers\ManagementMasyarakatController;
+use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\ProgramKerjaController;
 
 /*
@@ -54,4 +55,10 @@ Route::controller(KeuanganController::class)->middleware(['auth','role:pengurus'
     Route::post('/pengurus/keuangan/tambah','store')->name('pengurus.keuangan.store');
     Route::patch('/pengurus/keuangan/update','update')->name('pengurus.keuangan.update');
     Route::delete('/pengurus/keuangan/delete','delete')->name('pengurus.keuangan.delete');
+});
+Route::controller(PengumumanController::class)->middleware(['auth','role:pengurus'])->group(function(){
+    Route::get('/pengurus/pengumuman/index','index')->name('pengurus.pengumuman.index');
+    Route::post('/pengurus/pengumuman/tambah','store')->name('pengurus.pengumuman.store');
+    Route::patch('/pengurus/pengumuman/update','update')->name('pengurus.pengumuman.update');
+    Route::delete('/pengurus/pengumuman/delete','delete')->name('pengurus.pengumuman.delete');
 });

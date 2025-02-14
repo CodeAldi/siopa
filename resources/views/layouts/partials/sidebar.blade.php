@@ -59,8 +59,8 @@
                 <div>Management Keuangan</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('pengurus.pengumuman.*')) ? 'active' : '' }}">
+            <a href="{{ route('pengurus.pengumuman.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-bell"></i>
                 <div>Management Pengumuman</div>
             </a>
