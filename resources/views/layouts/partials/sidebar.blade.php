@@ -109,13 +109,13 @@
                 <div>Jadwal Kegiatan</div>
             </a>
         </li>
-        <li class="menu-item">
+        <li class="menu-item {{ (Request::RouteIs('masyarakat.pengumuman.*')) ? 'active' : '' }}">
             <a href="{{ route('masyarakat.pengumuman.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-news"></i>
                 <div>Lihat Pengumuman</div>
             </a>
         </li>
-        <li class="menu-item">
+        <li class="menu-item {{ (Request::RouteIs('masyarakat.kas.*')) ? 'active' : '' }}">
             <a href="{{ route('masyarakat.kas.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-dollar"></i>
                 <div>Lihat Keuangan</div>
